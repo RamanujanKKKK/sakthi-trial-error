@@ -24,32 +24,29 @@ const SchedulePanel = (props) => {
         props.data.training.filter((ele) => ele.id == currentEdit.name_id)[0]
       );
     }
-    if (!("name" in currentEdit)) {
-      let k = JSON.parse(JSON.stringify(currentEdit));
-      k["name"] = k["tp_code"];
-      setCurrentEdit(k);
-    }
-    console.log(props.data.schedule);
-    let scheduleMap = props.data.schedule.map((ele) => {
-      let k = JSON.parse(JSON.stringify(ele));
-      k["name"] = k["tp_code"];
-      return k;
-    });
-    if (currentEdit.name_id != currentTraining.id) {
-      let data = scheduleMap.filter((ele) => {
-        return ele.name_id == currentTraining.id;
+    if (currentEdit) {
+      if (!("name" in currentEdit)) {
+        let k = JSON.parse(JSON.stringify(currentEdit));
+        k["name"] = k["tp_code"];
+        setCurrentEdit(k);
+      }
+      scheduleMap = props.data.schedule.map((ele) => {
+        let k = JSON.parse(JSON.stringify(ele));
+        k["name"] = k["tp_code"];
+        return k;
       });
-      if (data.length == 0)
-        setCurrentTraining(
-          props.data.training.filter((ele) => ele.id == currentEdit.name_id)[0]
-        );
-      else setCurrentEdit(data[0]);
-      console.log(currentTraining);
-      console.log(
-        scheduleMap.filter((ele) => {
+      if (currentEdit.name_id != currentTraining.id) {
+        let data = scheduleMap.filter((ele) => {
           return ele.name_id == currentTraining.id;
-        })
-      );
+        });
+        if (data.length == 0)
+          setCurrentTraining(
+            props.data.training.filter(
+              (ele) => ele.id == currentEdit.name_id
+            )[0]
+          );
+        else setCurrentEdit(data[0]);
+      }
     }
   }
   function addDaysToDate(dateStr, days) {
@@ -79,10 +76,10 @@ const SchedulePanel = (props) => {
           label="Trainer"
           name="trainer_id"
           options={props.data.trainer}
-          value={props.data.trainer[0].id}
+          value={props.data.trainer.length == 0 ? 0 : props.data.trainer[0].id}
         ></SingleOptionInput>
       </FormContainer>
-      {props.data.schedule.length != 0 ? (
+      {props.data.schedule.length != 0 && currentEdit ? (
         <FormContainer
           dataHandler={props.dataHandler}
           action="editSchedule"
@@ -135,7 +132,7 @@ const SchedulePanel = (props) => {
       ) : (
         <h1>no data present</h1>
       )}
-      {props.data.schedule.length != 0 ? (
+      {props.data.schedule.length != 0 && currentEdit ? (
         <FormContainer
           dataHandler={props.dataHandler}
           action="delSchedule"

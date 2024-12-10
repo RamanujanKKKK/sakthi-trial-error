@@ -30,7 +30,7 @@ const EmployeePanel = (props) => {
           options={props.data.designation}
         ></SingleOptionInput>
       </FormContainer>
-      {props.data.employees.length != 0 ? (
+      {props.data.employees.length != 0 && currentEdit ? (
         <FormContainer
           dataHandler={props.dataHandler}
           action="editEmployee"
@@ -92,7 +92,7 @@ const EmployeePanel = (props) => {
       ) : (
         <h1>no data present</h1>
       )}
-      {props.data.employees.length != 0 ? (
+      {props.data.employees.length != 0 && currentEdit ? (
         <FormContainer
           dataHandler={props.dataHandler}
           action="delEmployee"
