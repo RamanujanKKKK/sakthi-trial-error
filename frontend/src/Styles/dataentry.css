@@ -1,0 +1,151 @@
+.maincont {
+  height: calc(100% - 80px);
+  display: flex;
+  width: 100vw;
+}
+
+.leftcont {
+  flex: 1;
+  min-height: 100%;
+  padding: 0;
+}
+.rightcont {
+  flex: 4;
+  overflow-y: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.leftcont ul {
+  background-color: #223343;
+  color: white;
+  height: 100%;
+  margin-bottom: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.leftcont > ul > li {
+  height: 7%;
+
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: white;
+}
+.leftcont > ul > li:hover {
+  background-color: #0c1925;
+  cursor: pointer;
+}
+
+.choose-table-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.text-input,
+.single-select-input,
+.multi-option-input {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 1%;
+}
+.multi-option-input {
+  margin-left: 0;
+  margin-right: 0;
+}
+.text-input-label,
+.single-select-label,
+.multi-option-label {
+  font-weight: bolder;
+  font-size: x-large;
+  color: white;
+}
+.text-input-box,
+.single-select-box,
+.multi-option-box {
+  width: 50%;
+  border-radius: 5%;
+  font-size: large;
+  text-align: center;
+}
+
+.selected-option-list {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.selected-option-list-item {
+  height: 35px;
+  border: 3px solid transparent;
+  border-radius: 10px;
+  background-color: white;
+  /* display: block; */
+  display: flex;
+  align-items: center;
+  width: 20%;
+  padding: 1%;
+  font-size: large;
+  justify-content: space-between;
+  margin-right: 2%;
+}
+.selected-option-btn {
+  background-color: red;
+  border-radius: 5px;
+  border: 0px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  height: 125%;
+  aspect-ratio: 1;
+}
+
+.submit-btn {
+  font-size: x-large;
+  padding: 0 1rem;
+  text-align: center;
+  border-radius: 10px;
+  /* padding: 0.5%; */
+  background-color: rgb(179, 5, 5);
+  color: white;
+  border: 3px solid white;
+  transition: all 150ms ease;
+}
+
+.submit-btn:hover {
+  transition: all 150ms ease;
+  transform: scale(1.1);
+}
+
+.row-data {
+  width: 100%;
+  display: block;
+}
+.multi-field-select {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.multi-field-selectall {
+  align-self: flex-end;
+}
+.checkbox-select {
+  width: 10%;
+}
+.checkbox-name {
+  width: 43%;
+}
+.checkbox-dept {
+  width: 47%;
+}
