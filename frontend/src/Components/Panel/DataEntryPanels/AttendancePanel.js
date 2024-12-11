@@ -93,9 +93,9 @@ const AttendancePanel = (props) => {
             value={employeeHint}
           ></TextInputHint>
           <MultiFieldSelect name="name_id" options={option}></MultiFieldSelect>
-          <FileUpload label="Feedback" name="Feedback" scheduleID={currentEdit.id} ></FileUpload>
-          <FileUpload label="Content" name="Content" scheduleID={currentEdit.id} ></FileUpload>
-          <FileUpload label="Attendence" name="Attendence" scheduleID={currentEdit.id} ></FileUpload>
+          <FileUpload value="dummy" label="Feedback" name="Feedback" scheduleID={currentEdit.id} ></FileUpload>
+          <FileUpload value="dummy" label="Content" name="Content" scheduleID={currentEdit.id} ></FileUpload>
+          <FileUpload value="dummy" label="Attendence" name="Attendence" scheduleID={currentEdit.id} ></FileUpload>
         </FormContainer>
       ) : (
         <h2>No Schedule to mark attendance</h2>

@@ -91,15 +91,7 @@ let FormContainer = (props) => {
         continue
       }
 
-      if (ele.name.startsWith("f@j")) {
-        if (ele.value == "") {
-          alert("Files cannot be empty");
-          return;
-        }
-        console.log(dataState)
-        
-
-      }
+      console.log(dataState)
 
       if (!("options" in ele)) {
         if (ele.value == "") {
