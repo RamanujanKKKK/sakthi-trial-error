@@ -5,6 +5,7 @@ import SingleOptionInput from "../../form/inputs/SingleOptionInput";
 import MultiFieldSelect from "../../form/inputs/MultiFieldSelect";
 import TextInput from "../../form/inputs/TextInput";
 import TextInputHint from "../../form/inputs/TextInputHint";
+import FileUpload from "../../form/inputs/FileUpload";
 
 const AttendancePanel = (props) => {
   let [employeeHint, setEmployeeHint] = useState("");
@@ -54,7 +55,7 @@ const AttendancePanel = (props) => {
   )
   }
   return (
-    <DataOptionPanel dataLabel="Training Nomination" childCount={1}>
+    <DataOptionPanel dataLabel="Training Attendance" childCount={1}>
       {props.data.schedule.length != 0 ? (
         <FormContainer
           dataHandler={props.dataHandler}
@@ -92,6 +93,9 @@ const AttendancePanel = (props) => {
             value={employeeHint}
           ></TextInputHint>
           <MultiFieldSelect name="name_id" options={option}></MultiFieldSelect>
+          <FileUpload label="Feedback" name="Feedback" scheduleID={currentEdit.id} ></FileUpload>
+          <FileUpload label="Content" name="Content" scheduleID={currentEdit.id} ></FileUpload>
+          <FileUpload label="Attendence" name="Attendence" scheduleID={currentEdit.id} ></FileUpload>
         </FormContainer>
       ) : (
         <h2>No Schedule to mark attendance</h2>

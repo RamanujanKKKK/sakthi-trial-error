@@ -1,8 +1,30 @@
 var express = require("express");
 const { DBActionC } = require("./db.js");
 const e = require("express");
+const multer = require("multer");
+const path = require("path");
 
 var router = express.Router();
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, "uploads/"); // Directory to save uploaded files
+  },
+  filename: (req, file, cb) => {
+    console.log(100)
+    cb(null, (req.filename || "default") + path.extname(file.originalname)); // Rename file with timestamp
+  },
+});
+
+const upload = multer({ storage });
+
+// Create 'uploads' folder if it doesn't exist
+const fs = require("fs");
+if (!fs.existsSync("uploads")) {
+  fs.mkdirSync("uploads");
+}
+
+
 
 let DBAction = new DBActionC();
 router.get("/", async (req, res) => {
@@ -74,12 +96,12 @@ router.get("/", async (req, res) => {
     }
   });
   employees.forEach(element => {
-  	if(data.departmentCount2[element.department_id]){
-  		data.departmentCount2[element.department_id]+=1;
-  	}
-  	else{
-  		data.departmentCount2[element.department_id]=1
-  	}
+    if (data.departmentCount2[element.department_id]) {
+      data.departmentCount2[element.department_id] += 1;
+    }
+    else {
+      data.departmentCount2[element.department_id] = 1
+    }
   });
 
   nomination.forEach((element) => {
@@ -550,5 +572,17 @@ router.post("/addAttendance", async (req, res) => {
   }
   res.send(status);
 });
+
+
+router.post("/file/:name", async (req, res,next) => {
+  req.filename = req.params.name
+  next()
+}, upload.single("file"), async (req, res) => {
+  if (!req.file) {
+    return res.status(400).send("No file uploaded.");
+  }
+  res.send(`File uploaded as ${req.file.filename}`);
+  console.log("recie")
+})
 
 module.exports = router;

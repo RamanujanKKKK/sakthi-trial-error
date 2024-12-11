@@ -11,7 +11,6 @@ const ScheduleTable = (props) => {
     delete cl.created_at;
     cl.from_date = cl.from_date.slice(0, 10);
     cl.to_date = cl.to_date.slice(0, 10);
-    delete cl.id;
     delete cl.name_id;
     delete cl.trainer_id;
     delete cl.updated_at;
@@ -23,6 +22,9 @@ const ScheduleTable = (props) => {
     columnHeaders = ["No Data Available"];
   } else {
     columnHeaders = Object.keys(data[0]);
+    columnHeaders.push("Content");
+    columnHeaders.push("Attendence");
+    columnHeaders.push("Feedback");
   }
 
   return (
@@ -54,7 +56,7 @@ const ScheduleTable = (props) => {
                         >
                           Click here
                         </a>
-                      ) : (
+                      ) : header === "Content" ? <a target="_blank" href={"http://" + window.location.hostname + ":8001/uploads/"+trainingData["id"]+"f@j"+"Content.pdf"}>Click Me</a> : header === "Attendence" ? <a target="_blank" href={"http://" + window.location.hostname + ":8001/uploads/"+trainingData["id"]+"f@j"+"Attendence.pdf"}>Click Me</a> : header === "Feedback" ? <a  target="_blank" href={"http://" + window.location.hostname + ":8001/uploads/"+trainingData["id"]+"f@j"+"Feedback.pdf"}>Click Me</a> : (
                         trainingData[header]
                       )}
                     </td>

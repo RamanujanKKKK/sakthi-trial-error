@@ -12,6 +12,7 @@ let FormContainer = (props) => {
   if (dataState.length == 0) {
     let data = [];
     props.children.map((element) => {
+      console.log(element.type.displayName)
       if (element.type.displayName == "TextInput") {
         if ("value" in element.props) {
           data.push({ value: element.props.value, name: element.props.name });
@@ -60,22 +61,46 @@ let FormContainer = (props) => {
             value: [],
           });
         }
-      } else {
+      }
+      else if (element.type.displayName == "FileUpload") {
+        if ("value" in element.props) {
+          data.push({ value: element.props.value, name: "f@j"+element.props.name });
+        } else {
+          data.push({ value: "", name: "f@j" + element.props.name });
+        }
+      }
+      else {
         data.push([]);
       }
     });
     setDataState(data);
   }
 
-  const submit = (e) => {
+  const submit = async (e) => {
     let data = {};
     if (props.checkLen)
       if (props.checkLen == 1) {
         alert("only one data present! create other data to delete this");
         return;
       }
+      console.log(dataState)
     for (let el in dataState) {
       let ele = dataState[el];
+      console.log(ele.value)
+      if(!("value" in ele)){
+        continue
+      }
+
+      if (ele.name.startsWith("f@j")) {
+        if (ele.value == "") {
+          alert("Files cannot be empty");
+          return;
+        }
+        console.log(dataState)
+        
+
+      }
+
       if (!("options" in ele)) {
         if (ele.value == "") {
           setDangerLog(true);
@@ -99,6 +124,9 @@ let FormContainer = (props) => {
         }
       }
     }
+
+
+
     // console.log(data);
     axios
       .post(
@@ -127,13 +155,13 @@ let FormContainer = (props) => {
     <div className="form-container">
       {dataState.length != 0
         ? props.children.map((element) => {
-            indexELement += 1;
-            return React.cloneElement(element, {
-              data: dataState,
-              setDataState: setDataState,
-              index: indexELement - 1,
-            });
-          })
+          indexELement += 1;
+          return React.cloneElement(element, {
+            data: dataState,
+            setDataState: setDataState,
+            index: indexELement - 1,
+          });
+        })
         : null}
       <Submit sendData={submit}></Submit>
       <br></br>
