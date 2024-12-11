@@ -6,7 +6,7 @@ class DataHandler {
   }
   addDepartment(data, dept) {
     data = this.clone(data);
-    console.log(100);
+    // console.log(100);
     data.filter.department = [...data.filter.department, dept];
     this.dataHandler(data);
   }
@@ -94,7 +94,7 @@ class DataHandler {
       .get("http://" + window.location.hostname + ":8001")
       .then((response) => {
         this.dataHandler(response.data);
-        console.log(100);
+        // console.log(100);
       });
   }
 }

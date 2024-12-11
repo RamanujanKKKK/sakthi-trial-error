@@ -27,7 +27,7 @@ export const Node = (props) => {
     props.clickOpr(props.value);
   };
   const setActiveLink = () => {
-    console.log(100);
+    // console.log(100);
     props.handleLink[0](props.value.id);
   };
   return (

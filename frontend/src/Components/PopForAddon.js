@@ -15,7 +15,7 @@ const PopForAddon = (props) => {
 
                         </tr>
                         {props.data.trainingAttendenceEmp[props.scheduleID].map((e) => {
-                            console.log(e);
+                            {/* console.log(e); */}
                             let emp = props.data.employees.filter((ele) => ele.id == e.employee_id)[0];
                             return (<tr>
                                 <td>{emp.id}</td>

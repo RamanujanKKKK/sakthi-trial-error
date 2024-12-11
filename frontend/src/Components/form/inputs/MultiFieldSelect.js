@@ -98,6 +98,7 @@ const MultiFieldSelect = (props) => {
           ></RowData>
         );
       })}
+    <br/>
     </div>
   );
 };

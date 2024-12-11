@@ -99,7 +99,7 @@ let FormContainer = (props) => {
         }
       }
     }
-    console.log(data);
+    // console.log(data);
     axios
       .post(
         "http://" + window.location.hostname + ":8001/" + props.action,
@@ -115,7 +115,7 @@ let FormContainer = (props) => {
         await props.dataHandler.updateData();
       })
       .catch(function (error) {
-        console.log(error);
+        // console.log(error);
       });
   };
 

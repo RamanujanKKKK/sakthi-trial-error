@@ -179,7 +179,7 @@ const Additional_Filter = (props) => {
   let scrollEnd = (e) => {
     if (messagesEnd) {
       messagesEnd.scrollIntoView({ behavior: "smooth" });
-      console.log(10013);
+      // console.log(10013);
     }
   };
   const customStyles = { width: "300px" };
@@ -392,8 +392,14 @@ const Additional_Filter = (props) => {
                 </ul>
               </div>
             )}
+            {/* {console.log(props.data.employees)} */}
+            {currentDept && (<span className="countval">
+              No of employee : {props.data.departmentCount2[currentDept]}
+              {/* <br></br> */}
+            </span>)}
             {currentDept && (
               <div>
+              <br></br>
                 <h2 style={{ paddingLeft: "1rem" }}>&nbsp;Trainings :</h2>
                 <ul className="deptna">
                   {props.data.revlinks[currentDept] == null ? (

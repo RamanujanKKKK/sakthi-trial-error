@@ -32,7 +32,7 @@ const ScheduleView = (props) => {
       outList.push(outD);
     }
   });
-  console.log(outList);
+  // console.log(outList);
 
   return (
     <div className="popup" style={{ zIndex: "121" }}>

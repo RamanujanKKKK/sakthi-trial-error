@@ -6,7 +6,7 @@ import DataOptionPanel from "./DataOptionPanel";
 
 const DepartmentPanel = (props) => {
   let [currentEdit, setCurrentEdit] = useState(props.data.department[0]);
-  console.log(props.data.department);
+  // console.log(props.data.department);
   return (
     <DataOptionPanel dataLabel="Department">
       <FormContainer dataHandler={props.dataHandler} action="addDept">

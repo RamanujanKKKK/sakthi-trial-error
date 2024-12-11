@@ -194,7 +194,7 @@ export const InfoContainer = (props) => {
   });
 
   const percentChange = (e) => {
-    console.log(barperscent);
+    // console.log(barperscent);
     setbarpersent(e.target.value);
   };
 

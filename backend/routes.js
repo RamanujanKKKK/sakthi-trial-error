@@ -31,6 +31,7 @@ router.get("/", async (req, res) => {
     linkWemp: {},
     trainingCount: {},
     departmentCount: {},
+    departmentCount2: {},
     employeebyTraining: {},
     employeebyDept: {},
     trainer: trainer,
@@ -72,15 +73,14 @@ router.get("/", async (req, res) => {
       data.trainingCount[element.training_id] = 1;
     }
   });
-  // nomination.forEach(element => {
-  // 	let dept = DBAction.getDataById(employees,element.employee_id);
-  // 	if(data.departmentCount[dept.id]){
-  // 		data.departmentCount[dept.id]+=1;
-  // 	}
-  // 	else{
-  // 		data.departmentCount[dept.id]=1
-  // 	}
-  // });
+  employees.forEach(element => {
+  	if(data.departmentCount2[element.department_id]){
+  		data.departmentCount2[element.department_id]+=1;
+  	}
+  	else{
+  		data.departmentCount2[element.department_id]=1
+  	}
+  });
 
   nomination.forEach((element) => {
     if (data.linkWemp[element.trainingtype_id]) {
@@ -473,10 +473,8 @@ router.post("/addSchedule", async (req, res) => {
     let date2 = new Date(
       new Date(dateStr).getTime() + days * 24 * 60 * 60 * 1000
     );
-    console.log(date2);
     return date2.toISOString().split("T")[0];
   }
-  console.log(req.body);
   req.body["to_date"] = addDaysToDate(
     req.body.from_date,
     req.body.duration - 1

@@ -61,7 +61,7 @@ export const GraphContainer = (props) => {
   };
   const addRevlinkState = (department_id) => {
     let k = props.data.revlinks[department_id];
-    console.log(k);
+    // console.log(k);
     if (k == null) {
       k = [];
     }

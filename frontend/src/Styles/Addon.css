@@ -65,7 +65,14 @@
 .label {
   color: white;
 }
-
+.countval{
+  font-size: larger;
+  font-weight: 250;
+  margin-left: 25px;
+  border: 2.5px solid black;
+  padding: 10px;
+  border-radius: 10px;
+}
 .lastfilter {
   display: flex;
   align-items: center;

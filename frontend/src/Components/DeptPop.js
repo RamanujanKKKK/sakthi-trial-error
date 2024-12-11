@@ -21,7 +21,6 @@ const DeptPop = (props) => {
               <th>Days</th>
             </tr>
             {props.emp.map((e) => {
-              console.log(min, max, e.attendedDays);
               if (
                 (id == "" || e.id.includes(id)) &&
                 (name == "" || e.name.includes(name)) &&

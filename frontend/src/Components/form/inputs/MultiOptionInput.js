@@ -43,7 +43,7 @@ const MultiOptionInput = (props) => {
         >
           <option value={"select"}>select option</option>
           {props.options.map((element) => {
-            console.log(props.data);
+            {/* console.log(props.data); */}
             if (
               props.data[props.index].value &&
               props.data[props.index].value.filter((ele) => ele == element.id)

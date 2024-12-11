@@ -16,7 +16,7 @@ export default function DoubleBar(props) {
   let valdesc = props.desc;
   props.data.map((dat) => {
     let k = JSON.parse(JSON.stringify(dat));
-    console.log(k.nominated, k.attended);
+    // console.log(k.nominated, k.attended);
     k.nominated = k.nominated - k.attended;
     data.push(k);
   });

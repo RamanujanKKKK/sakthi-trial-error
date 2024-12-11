@@ -23,7 +23,11 @@
 }
 .data-option-panel-label {
   font-size: xx-large;
-  color: black;
+  color: white; 
+  padding: 8px 20px;
+  /* background-color: orangered; */
+  border: 1.5px solid white;
+  border-radius: 7px;
 }
 .data-option-head-cont {
   width: 100%;

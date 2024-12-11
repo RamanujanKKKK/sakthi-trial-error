@@ -6,7 +6,7 @@ const DataOptionPanel = (props) => {
   const [panelType, setPanelType] = useState(0);
   const handlePanelChange = (e) => {
     setPanelType(e.target.value);
-    console.log(e.target.value);
+    // console.log(e.target.value);
   };
   return (
     <div className="data-option-panel">

@@ -7,7 +7,7 @@ import DataOptionPanel from "./DataOptionPanel";
 
 const TrainingPanel = (props) => {
   let [currentEdit, setCurrentEdit] = useState(props.data.training[0]);
-  console.log(props.data.links, currentEdit);
+  // console.log(props.data.links, currentEdit);
   return (
     <DataOptionPanel dataLabel="Training">
       <FormContainer

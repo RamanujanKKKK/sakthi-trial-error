@@ -4,8 +4,10 @@ import DataOptionPanel from "./DataOptionPanel";
 import SingleOptionInput from "../../form/inputs/SingleOptionInput";
 import MultiFieldSelect from "../../form/inputs/MultiFieldSelect";
 import TextInput from "../../form/inputs/TextInput";
+import TextInputHint from "../../form/inputs/TextInputHint";
 
 const AttendancePanel = (props) => {
+  let [employeeHint, setEmployeeHint] = useState("");
   let [currentEdit, setCurrentEdit] = useState(props.data.schedule[0]);
   let [currentTraining, setCurrentTraining] = useState(
     props.data.schedule.length != 0
@@ -45,6 +47,11 @@ const AttendancePanel = (props) => {
         option.push(data);
       }
     });
+    option = option.filter((ele)=>{  
+      return ele.name.toLowerCase().indexOf(employeeHint.toLowerCase()) !==
+      -1
+    }
+  )
   }
   return (
     <DataOptionPanel dataLabel="Training Nomination" childCount={1}>
@@ -79,6 +86,11 @@ const AttendancePanel = (props) => {
             value={0}
             name="attended_days"
           ></TextInput>
+          <TextInputHint
+            label="Employee Name (Hint)"
+            setHint={setEmployeeHint}
+            value={employeeHint}
+          ></TextInputHint>
           <MultiFieldSelect name="name_id" options={option}></MultiFieldSelect>
         </FormContainer>
       ) : (

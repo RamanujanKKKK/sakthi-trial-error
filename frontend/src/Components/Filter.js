@@ -12,7 +12,6 @@ const Filter = ( props) => {
       setList2([...list2,  ...props.data.department.filter(name=>name.name==event.target.value) ]);
       const updatedList1 = list1.filter(name => name.name !== event.target.value);
       setList1(updatedList1);
-      console.log(props.dataHandler.addDepartment);
       props.dataHandler.addDepartment(props.data,props.data.department.filter(name=>name.name==event.target.value)[0])
 
     }
@@ -44,7 +43,7 @@ const Filter = ( props) => {
     setList2(updatedList2);
     let l2 = [...list1, nameToRemove].sort((a,b)=>a.name-b.name);
     setList1(l2);
-    console.log(props.dataHandler.removeDepartment);
+    // console.log(props.dataHandler.removeDepartment);
     props.dataHandler.removeDepartment(props.data,nameToRemove);
 
   };

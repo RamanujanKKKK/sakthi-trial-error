@@ -3,8 +3,10 @@ import FormContainer from "../../form/FormContainer";
 import DataOptionPanel from "./DataOptionPanel";
 import SingleOptionInput from "../../form/inputs/SingleOptionInput";
 import MultiFieldSelect from "../../form/inputs/MultiFieldSelect";
+import TextInputHint from "../../form/inputs/TextInputHint";
 
 const NominationPanel = (props) => {
+  let [employeeHint, setEmployeeHint] = useState("");
   let [currentEdit, setCurrentEdit] = useState(props.data.schedule[0]);
   let [currentTraining, setCurrentTraining] = useState(
     props.data.schedule.length == 0
@@ -41,10 +43,15 @@ const NominationPanel = (props) => {
     }
     value = [];
     props.data.nominationtable.forEach((ele) => {
-      console.log(ele.training_id, currentEdit);
+      // console.log(ele.training_id, currentEdit);
       if (ele.training_id == currentEdit.id) value.push(ele.employee_id);
     });
   }
+  option = option.filter((ele)=>{  
+    return ele.name.toLowerCase().indexOf(employeeHint.toLowerCase()) !==
+    -1
+  }
+)
   return (
     <DataOptionPanel dataLabel="Training Nomination" childCount={1}>
       {props.data.schedule.length != 0 ? (
@@ -72,6 +79,11 @@ const NominationPanel = (props) => {
             value={currentEdit.id}
             editChange={setCurrentEdit}
           ></SingleOptionInput>
+          <TextInputHint
+            label="Employee Name (Hint)"
+            setHint={setEmployeeHint}
+            value={employeeHint}
+          ></TextInputHint>
           <MultiFieldSelect
             name="name_id"
             options={option}
