@@ -32,23 +32,6 @@ export const Node = (props) => {
   };
   return (
     <>
-      {props.angle != NaN && props.angle > 90 && props.angle < 270 ? (
-        <div
-          className="node-text"
-          style={{
-            top: y2,
-            left: x2,
-            width: props.radius,
-            color: props.active ? "#222e3c" : null,
-            transform:
-              `translate(-150%,-100%) rotate(${angle}deg) ` +
-              (props.angle > 90 && props.angle < 270 ? `scale(1,1)` : ``),
-          }}
-        >
-          {value.name}
-        </div>
-      ) : null}
-
       <div
         className="node"
         onMouseEnter={setActiveLink}
@@ -64,9 +47,17 @@ export const Node = (props) => {
             ? "#222e3c"
             : null,
           border: props.linkActive ? "5px solid #AAFF00" : null,
+          zIndex: "1",
         }}
       >
-        {props.renderImg && <img src={logo} style={{ height: "100%" }}></img>}
+        {props.renderImg && (
+          <div style={{ height: "100%", backgroundColor: "black" }}>
+            <img
+              src="/logo2.jpeg"
+              style={{ height: "72%", marginTop: "15%", marginBottom: "15%" }}
+            ></img>
+          </div>
+        )}
       </div>
       {props.angle != NaN && !(props.angle > 90 && props.angle < 270) ? (
         <div
@@ -76,9 +67,26 @@ export const Node = (props) => {
             left: x2,
             width: props.radius,
             color: props.active ? "#222e3c" : null,
-            transform:
-              `translate(-50%,-50%) rotate(${angle}deg) ` +
-              (props.angle > 90 && props.angle < 270 ? `scale(1,1)` : ``),
+            transform: `translate(-50%,-50%) rotate(${angle}deg) `,
+            lineHeight: "8px",
+          }}
+        >
+          {value.name}
+        </div>
+      ) : null}
+
+      {props.angle != NaN && props.angle > 90 && props.angle < 270 ? (
+        <div
+          className="node-text"
+          style={{
+            top: y2,
+            left: x2,
+            width: props.radius,
+            color: props.active ? "#222e3c" : null,
+            transform: `translate(-50%,-50%) rotate(${angle}deg) `,
+            zIndex: "0",
+            paddingRight: "60px",
+            lineHeight: "8px",
           }}
         >
           {value.name}

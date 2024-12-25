@@ -24,7 +24,7 @@ const InfoPage = (props) => {
       let dept = props.dataHandler.getDeptById(props.data, dept_id);
       props.data.employeebyDept[dept_id].forEach((emp) => {
         let empToOut = {
-          emp_id: emp.id,
+          emp_id: emp.emp_id,
           name: emp.name,
           dept: dept.name,
           trainings: [],

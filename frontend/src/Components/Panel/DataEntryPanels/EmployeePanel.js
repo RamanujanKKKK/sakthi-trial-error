@@ -4,6 +4,7 @@ import SingleOptionInput from "../../form/inputs/SingleOptionInput";
 import TextInput from "../../form/inputs/TextInput";
 import DataOptionPanel from "./DataOptionPanel";
 import TextInputHint from "../../form/inputs/TextInputHint";
+import FileInput from "../../form/inputs/FileInput";
 
 const EmployeePanel = (props) => {
   let [employeeHint, setEmployeeHint] = useState("");
@@ -29,6 +30,11 @@ const EmployeePanel = (props) => {
           value={props.data.designation[0].id}
           options={props.data.designation}
         ></SingleOptionInput>
+        <FileInput
+          department={props.data.department}
+          designation={props.data.designation}
+          dataHandler={props.dataHandler}
+        ></FileInput>
       </FormContainer>
       {props.data.employees.length != 0 && currentEdit ? (
         <FormContainer

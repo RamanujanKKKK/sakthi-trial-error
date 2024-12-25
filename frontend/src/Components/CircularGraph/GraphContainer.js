@@ -22,8 +22,8 @@ export const GraphContainer = (props) => {
   let perAngleInner = 360 / inner.length;
   let perAngleOuter = 360 / outer.length;
 
-  let outerRadius = window.innerWidth * 0.6 * 0.5 * 0.45;
-  let innerRadius = window.innerWidth * 0.6 * 0.5 * 0.2;
+  let outerRadius = window.innerWidth * 0.6 * 0.5 * 0.53;
+  let innerRadius = window.innerWidth * 0.6 * 0.5 * 0.3;
 
   let highLightDept = [];
   let highLightTraining = [];
@@ -86,7 +86,7 @@ export const GraphContainer = (props) => {
                 linkActive={revlinkState.includes(value.id)}
                 active={highLightTraining.includes(value.id)}
                 value={value}
-                radius={30}
+                radius={15}
                 positionRadius={outerRadius}
                 angle={angle}
               ></Node>
@@ -102,7 +102,7 @@ export const GraphContainer = (props) => {
                 linkActive={linkState.includes(value.id)}
                 active={highLightDept.includes(value.id)}
                 value={value}
-                radius={30}
+                radius={15}
                 positionRadius={innerRadius}
                 angle={angle}
               ></Node>
@@ -118,7 +118,7 @@ export const GraphContainer = (props) => {
           ></Node>
         </div>
       </div>
-      <button className="togglebtn" id='btn-anim' onClick={changeName}>
+      <button className="togglebtn" id="btn-anim" onClick={changeName}>
         {buttonName ? "Select ALL" : "Deselect ALL"}
       </button>
     </div>
